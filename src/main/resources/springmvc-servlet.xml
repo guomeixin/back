@@ -37,7 +37,7 @@
           <property name="charset" value="UTF-8"></property>
           <property name="serializerFeatures" >
               <list>
-                  <!---->
+                  <!--配置对象-->
                   <value>PrettyFormat</value>
                   <!--循环解析-->
                   <value>DisableCircularReferenceDetect</value>
