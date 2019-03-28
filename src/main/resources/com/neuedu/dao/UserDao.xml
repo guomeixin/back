@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neuedu.dao.UserDao">
+    <!--id是方法名-->
+    <select id="login" resultType="User">
+        select id,login_id,name,phone,password,sex,birthday,email,address,is_del from user
+    </select>
+   <insert id="add" parameterType="User">
+        insert into user (login_id,name,phone,password,sex,birthday,email,address,is_del)
+         values
+         (#{login_id},#{name},#{phone},#{password},#{sex},#{birthday},#{email},#{address},#{is_del});
+    </insert>
+    <insert id="batch" parameterType="java.util.List">
+        insert into user  (login_id,name,phone,password,sex,birthday,email,address,is_del)
+         values   
+         <foreach collection="list" item="user" separator=",">
+             (
+             #{user.login_id},
+             #{user.name},
+             #{user.phone},
+             #{user.password},
+             #{user.sex},
+             #{user.birthday},
+             #{user.email},
+             #{user.address},
+             #{user.is_del}
+             )
+         </foreach>
+    </insert>
+    <select id="list" resultType="User">
+        select id,login_id,name,phone,password,sex,birthday,email,address,is_del from user
+    </select>
+</mapper>
