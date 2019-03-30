@@ -34,7 +34,7 @@
                     <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input id="text" type="text" class="input input-big" name="login_id" placeholder="登录账号" data-validate="required:请填写账号" />
+                                <input id="login_id" type="text" class="input input-big" name="login_id" placeholder="登录账号" data-validate="required:请填写账号" />
                                 <span class="icon icon-user margin-small"></span>
                             </div>
                         </div>
@@ -46,13 +46,13 @@
                         </div>
                         <div class="form-group">
                             <div class="field">
-                                <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
-                                <img src="${basePath}/images/passcode.jpg" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+                                <input id="code" type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
+                                <img  id="img" src="${basePath}/user/img" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                             </div>
                         </div>
                     </div>
                     <div style="padding:30px;">
-                        <button id="btn" type="submit" class="button button-block bg-main text-big input-big">登录</button></div>
+                        <button id="btn" type="button" class="button button-block bg-main text-big input-big">登录</button></div>
                 </div>
             </form>
         </div>
@@ -67,13 +67,20 @@
                    dataType:"json",
                    data:{
                        login_id:$("#login_id").val(),
-                       password:$("#password").val()
+                       password:$("#password").val(),
+                       code:$("#code").val()
                    },
                    success:function(result){
                        if(result.code==0)
                            alert(result.message);
+                       else
+                           window.location.href="${basepath}/user/index";
                    }
                });
+            });
+            $("#img").click(function(){
+                let date=new Date();
+                $("#img").attr("src","${basepath}/user/img?"+date.getTime());
             });
         });
     </script>

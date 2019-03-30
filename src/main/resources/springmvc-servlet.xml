@@ -47,8 +47,6 @@
                   <value>WriteNullStringAsEmpty</value>
                   <!--避免null-->
                   <value>WriteNullListAsEmpty</value>
-                  <value></value>
-
               </list>
           </property>
     </bean>

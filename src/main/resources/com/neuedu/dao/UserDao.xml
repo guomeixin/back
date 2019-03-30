@@ -5,15 +5,27 @@
 <mapper namespace="com.neuedu.dao.UserDao">
     <!--id是方法名-->
     <select id="login" resultType="User">
-        select id,login_id,name,phone,password,sex,birthday,email,address,is_del from user
+        select id,login_id,name,phone,password,sex,birthday,email,address,is_del from user where login_id=#{login_id};
     </select>
    <insert id="add" parameterType="User">
         insert into user (login_id,name,phone,password,sex,birthday,email,address,is_del)
          values
-         (#{login_id},#{name},#{phone},#{password},#{sex},#{birthday},#{email},#{address},#{is_del});
+         (
+         #{login_id},
+         #{name},
+         #{phone},
+         #{password},
+         #{sex},
+         #{birthday},
+         #{email},
+         #{address},
+         #{is_del}
+         );
     </insert>
+    <!--批量添加-->
     <insert id="batch" parameterType="java.util.List">
-        insert into user  (login_id,name,phone,password,sex,birthday,email,address,is_del)
+        insert into user
+        (login_id,name,phone,password,sex,birthday,email,address,is_del)
          values   
          <foreach collection="list" item="user" separator=",">
              (
@@ -30,6 +42,19 @@
          </foreach>
     </insert>
     <select id="list" resultType="User">
-        select id,login_id,name,phone,password,sex,birthday,email,address,is_del from user
+        select
+           id,login_id,name,phone,password,sex,birthday,email,address,is_del
+        from user
+        <!--分页条件
+        <if test="withPage==1">
+            limit #{pageStart},#{pageSize}
+        </if>  -->
+    </select>
+    <select id="count" resultType="java.lang.Integer" parameterType="User">
+        select count(id) from user
+        <where>
+            <if test="name!=null">and name = #{name}</if>
+            <if test="sex!=null">and sex = #{sex}</if>
+        </where>
     </select>
 </mapper>

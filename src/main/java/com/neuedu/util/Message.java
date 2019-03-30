@@ -1,4 +1,4 @@
-package com.neuedu.pojo;
+package com.neuedu.util;
 
 import lombok.Data;
 

@@ -8,5 +8,6 @@ public interface UserDao {
     User login(User user);
     int add(User user);
     int batch(List<User> users);
-    List<User> list();
+    List<User> list(User user);
+    int count(User user);
 }
