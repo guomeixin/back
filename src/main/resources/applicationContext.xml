@@ -36,8 +36,8 @@
                 <bean class="com.github.pagehelper.PageHelper">
                     <property name="properties">
                         <value>
-                            diarect=mysql
-                            reasonable=true
+                            diarect=mysql<!--数据库类型-->
+                            reasonable=true<!--分页合理化-->
                         </value>
                     </property>
                 </bean>

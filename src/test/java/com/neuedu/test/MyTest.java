@@ -1,7 +1,5 @@
 package com.neuedu.test;
 
-import com.neuedu.pojo.User;
-import com.neuedu.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.generator.api.MyBatisGenerator;
@@ -13,18 +11,16 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)//启动时，先运行此类
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class MyTest {
-    @Resource
+   /* @Resource
     UserService userService;
     @Test
     public void   method(){
@@ -40,7 +36,7 @@ public class MyTest {
         user.setIs_del(1);
         System.out.println(userService.add(user));*/
      //批量添加
-    List<User> users = new ArrayList<User>();
+    /*List<User> users = new ArrayList<User>();
      for(int i=1;i<=100;i++){
          User user = new User();
          user.setLogin_id("r1"+i);
@@ -55,7 +51,7 @@ public class MyTest {
          users.add(user);
      }
         System.out.println(userService.batch(users));
-    }
+    }*/
 
     @Test
     public void generator(){

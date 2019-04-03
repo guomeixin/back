@@ -1,9 +1,9 @@
 package com.neuedu.controller;
 
 
-import com.neuedu.util.Message;
 import com.neuedu.pojo.User;
 import com.neuedu.service.UserService;
+import com.neuedu.util.Message;
 import com.neuedu.util.MyUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,9 @@ import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -54,11 +52,11 @@ public class UserController {
                }
            }
        }
-       /*FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        SerializerFeature.DisableCircularReferenceDetect
-        System.out.println(JSONObject.toJSONString(message));
-        return JSONObject.toJSONString(message);
-       response.getWriter().print(JSONObject.toJSONString(message));*/
+       //FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        //SerializerFeature.DisableCircularReferenceDetect
+        //System.out.println(JSONObject.toJSONString(message));
+       // return JSONObject.toJSONString(message);
+       //response.getWriter().print(JSONObject.toJSONString(message));
        return message;
    }
    @GetMapping("/img")
@@ -83,6 +81,6 @@ public class UserController {
    @GetMapping("/getList")
    @ResponseBody
     public Message getList(User user){
-       return new Message(1,userService.list(user));
+       return new Message(1,(userService.list(user));
    }
 }
